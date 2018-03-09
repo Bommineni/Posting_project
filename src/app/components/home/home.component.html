@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Logo</b>
+      </a>
+    </p>
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <button class="btn btn-primary btn-block"
+         [routerLink]="['/addpost']">Add Post</button>
+    </p>
+
+  </div>
+</nav>
+
+
+
+<div class="container" style="margin-top: 85px;">
+
+  <div *ngIf="successMessage"
+       class="alert alert-success">
+    "Succesfully created/deleted"
+  </div>
+
+  <div class="container">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <div *ngFor="let eachPost of posts">
+      <h4> Question:<p [innerHTML]="eachPost.question"></p></h4>
+      Answer: <p [innerHTML]= "eachPost.answer"></p>
+      Tags: <p [innerHTML]="eachPost.tag"></p> <br/>
+      Date Posted: {{eachPost.dateCreated}}<br/>
+      <button
+        class="btn btn-primary pull-right">
+        <span class="glyphicon glyphicon-edit"></span>
+      </button>
+      <button (click)="deletePost(posts._id)"
+              class="btn btn-danger pull-right">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button><br/>
+      <hr/>
+    </div>
+  </div>
+
+
+  </div>
+
+
+

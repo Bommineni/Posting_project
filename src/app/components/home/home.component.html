@@ -35,14 +35,17 @@
       Answer: <p [innerHTML]= "eachPost.answer"></p>
       Tags: <p [innerHTML]="eachPost.tag"></p> <br/>
       Date Posted: {{eachPost.dateCreated}}<br/>
+      {{eachPost.question}}
+      <p>{{eachPost._id}}</p>
+      <button (click)="deletePost(eachPost._id)"
+              class="btn btn-danger pull-right">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
       <button
         class="btn btn-primary pull-right">
         <span class="glyphicon glyphicon-edit"></span>
       </button>
-      <button (click)="deletePost(posts._id)"
-              class="btn btn-danger pull-right">
-        <span class="glyphicon glyphicon-remove"></span>
-      </button><br/>
+      <br/>
       <hr/>
     </div>
   </div>

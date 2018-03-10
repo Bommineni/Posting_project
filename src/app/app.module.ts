@@ -15,7 +15,6 @@ import { AddpostComponent } from './components/addpost/addpost.component';
 import {AddpostService} from './services/addpost.service.client';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
-
 @NgModule({
   // Declare components here
   declarations: [

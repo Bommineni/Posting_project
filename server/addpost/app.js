@@ -3,7 +3,7 @@ module.exports = function(app)
   app.post("/api/addpost", createPost);
   app.put("/api/addpost", updatePost);
   app.get("/api/addpost", findAllPosts);
-  app.delete("/api/addpost/:Id", deletePost);
+  app.delete("/api/deletepost/:postsId", deletePost);
 
   var mongoose = require("mongoose");
   var PostSchema = mongoose.Schema({
@@ -30,13 +30,13 @@ module.exports = function(app)
   }
 
   function updatePost(req, res){
-      var postId = req.params.postId;
+      var postsId = req.params.postsId;
       var postdata = req.body;
 
-      console.log('server side', postId, postdata);
+      console.log('server side', postsId, postdata);
 
       PostModel
-        .updatePost(postId, postData)
+        .updatePost(postsId, postData)
         .then(
           function(status){
             res.send(200);
@@ -52,7 +52,9 @@ module.exports = function(app)
         .find().sort({dateCreated : -1})
         .then(
           function(posts){
+            console.log(posts[0].question);
             res.json(posts);
+
           },
           function(error){
             res.statusCode(400).send(error);
@@ -62,8 +64,11 @@ module.exports = function(app)
   }
 
   function deletePost(req, res) {
+    console.log("delete server side");
+    var postsId = req.params.postsId;
+    console.log("server Side"+ postsId);
     PostModel
-      .remove({_id: req.params._id})
+      .deletePost(postsId)
       .then(
         function(result) {
           res.json(result);

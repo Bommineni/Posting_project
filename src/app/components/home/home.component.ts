@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   question: String;
   answer: String;
   tag: String;
-  postId: String;
   successMessage: Boolean = false;
   posts: any;
 
@@ -29,17 +28,18 @@ export class HomeComponent implements OnInit {
         (data: any) => {
         this.posts = data;
         console.log('posts', this.posts);
+        console.log(this.posts[0]._id);
         }
       );
   }
 
 
-  deletePost(postId) {
-    console.log(postId);
-    return this._addpostService.deletePost(postId)
+  deletePost(postsId) {
+    return this._addpostService.deletePost(postsId)
       .subscribe(
         (data: any) => {
           this.successMessage = true;
+          console.log(postsId);
           this.ngOnInit();
         }
       );

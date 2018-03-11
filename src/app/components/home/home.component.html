@@ -28,15 +28,14 @@
 
   <div class="container">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text"
+             class="form-control input-lg"
+             name="search"
+             placeholder="Search"
+             [(ngModel)]="filter"
+      />
     </div>
-    <div *ngFor="let eachPost of posts">
-      <h4> Question:<p [innerHTML]="eachPost.question"></p></h4>
-      Answer: <p [innerHTML]= "eachPost.answer"></p>
-      Tags: <p [innerHTML]="eachPost.tag"></p> <br/>
-      Date Posted: {{eachPost.dateCreated}}<br/>
-      {{eachPost.question}}
-      <p>{{eachPost._id}}</p>
+    <div class="container content" style="margin-top: 20px;" *ngFor="let eachPost of posts |filter:filter">
       <button (click)="deletePost(eachPost._id)"
               class="btn btn-danger pull-right">
         <span class="glyphicon glyphicon-remove"></span>
@@ -45,8 +44,12 @@
         class="btn btn-primary pull-right">
         <span class="glyphicon glyphicon-edit"></span>
       </button>
+      <p [innerHTML]="eachPost.question"></p>
+      <p [innerHTML]= "eachPost.answer"></p>
+      <p [innerHTML]="eachPost.tag"></p> <br/>
+      Date Posted: {{eachPost.dateCreated}}<br/>
+
       <br/>
-      <hr/>
     </div>
   </div>
 

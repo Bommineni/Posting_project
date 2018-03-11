@@ -34,12 +34,12 @@ export class HomeComponent implements OnInit {
   }
 
 
-  deletePost(postsId) {
-    return this._addpostService.deletePost(postsId)
+  deletePost(postId) {
+    return this._addpostService.deletePost(postId)
       .subscribe(
         (data: any) => {
           this.successMessage = true;
-          console.log(postsId);
+          console.log(postId);
           this.ngOnInit();
         }
       );

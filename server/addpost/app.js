@@ -3,7 +3,7 @@ module.exports = function(app)
   app.post("/api/addpost", createPost);
   app.put("/api/addpost", updatePost);
   app.get("/api/addpost", findAllPosts);
-  app.delete("/api/deletepost/:postsId", deletePost);
+  app.delete("/api/deletepost/:postId", deletePost);
 
   var mongoose = require("mongoose");
   var PostSchema = mongoose.Schema({
@@ -65,13 +65,16 @@ module.exports = function(app)
 
   function deletePost(req, res) {
     console.log("delete server side");
-    var postsId = req.params.postsId;
-    console.log("server Side"+ postsId);
+    var postId = req.params.postId;
+    console.log("server Side"+ postId);
     PostModel
-      .deletePost(postsId)
+      .remove({_id: postId})
       .then(
         function(result) {
+          console.log("result");
           res.json(result);
+          console.log("result" + result);
+
         },
         function(err) {
           res.status(400).send(err);

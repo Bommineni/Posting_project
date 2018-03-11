@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CKEditorModule} from 'ngx-ckeditor';
-
-
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { TestComponent } from './components/test/test.component';
@@ -31,7 +29,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     ReactiveFormsModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    CKEditorModule
+    Ng2SearchPipeModule
   ],
   // Client Side services here
   providers: [ TestService, AddpostService],

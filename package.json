@@ -30,6 +30,7 @@
     "mime-type": "^3.0.5",
     "mime-types": "^2.1.18",
     "mongoose": "^4.13.11",
+    "ng2-search-filter": "^0.4.7",
     "ngx-ckeditor": "^0.3.0",
     "ngx-quill-editor": "^2.2.2",
     "parse-glob": "^3.0.4",

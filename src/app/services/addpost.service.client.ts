@@ -43,15 +43,13 @@ import {environment} from '../../environments/environment';
       );
   }
 
-  deletePost(postsId) {
-    console.log('client side service' + postsId);
-    console.log('Url client side' + this.baseUrl + '/api/deletepost/' + postsId);
-    return this._http.delete(this.baseUrl + '/api/deletepost/' + postsId)
+  deletePost(postId) {
+    console.log('client side service' + postId);
+    console.log('Url client side' + this.baseUrl + '/api/deletepost/' + postId);
+    return this._http.delete(this.baseUrl + '/api/deletepost/' + postId)
       .map(
         (res: Response) => {
           const data = res.json();
-          console.log('printing data');
-          return data;
         }
       );
   }
